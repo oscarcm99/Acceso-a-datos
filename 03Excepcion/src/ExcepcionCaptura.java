@@ -8,6 +8,18 @@ public class ExcepcionCaptura {
 		opcion = teclado.nextInt();
 		return opcion;
 	}
+	static public int leerNumero2() throws NumeroErroneo {
+		int opcion = 0;
+
+		try {
+			Scanner teclado = new Scanner(System.in);
+			System.out.println("Introduce un numero: ");
+			opcion = teclado.nextInt();
+			return opcion;	
+		}catch(NumeroErroneo ex) {
+		
+		}
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		try {
