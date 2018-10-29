@@ -11,9 +11,11 @@ public class Principal {
 		File ficheroEscritura = new File("escribir.txt");
 		File ficheroLectura = new File("leer.txt");
 		int opcion = 0;
+		int posicion = 0;
+		int numero = 0;
 		Scanner teclado = new Scanner(System.in);
 		
-		while(opcion!=6) {
+		while(opcion!=5) {
 			escribirMenu();
 			opcion = teclado.nextInt();
 			switch(opcion) {
@@ -24,20 +26,63 @@ public class Principal {
 				leerFichero(ficheroLectura,tablaLec);
 				break;
 			case 3:
-				for (int i=0; i<tablaLec.length;i++)
-					System.out.println(tablaLec[i]);
+				imprimirContenido(tablaLec);
 				break;
 			case 4:
+				modificarFichero(ficheroEscritura,tablaNumeros,posicion,numero);
 				break;
 			case 5:
-				break;
-			case 6:
 				System.exit(0);
 				break;
 			default:
 				break;
 			}
 		}
+	}
+	private static void modificarFichero(File ficheroEscritura, int[] tablaNumeros, int posicion, int numero) {
+		// TODO Auto-generated method stub
+		Scanner teclado = new Scanner(System.in);
+		int n=0;
+		int i=0;
+		try {
+			ficheroEscritura = new File("escribir.txt");
+			FileReader freader = new FileReader(ficheroEscritura);
+			String[] cadena = new String[tablaNumeros.length];
+			cadena[0] = "";
+			System.out.println("Que posicion vas a modificar: ");
+			posicion = teclado.nextInt();
+			posicion = posicion-1;
+			n = freader.read();
+			while(n!=-1) {
+				if(n == '\n') {
+					if(i == posicion) {
+						FileWriter fwriter = new FileWriter(ficheroEscritura,true);
+						System.out.println("Introduce número: ");
+						numero = teclado.nextInt();
+						cadena[i] = Integer.toString(numero);
+						fwriter.write(cadena[i]);
+						fwriter.close();
+					}else {
+						cadena[i++] = "";
+					}
+						
+				}
+				else {
+					cadena[i++] += Character.toString((char)n);
+				}
+				n = freader.read();
+			}
+			freader.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	//Imprimir valor de la tabla
+	private static void imprimirContenido(int[] tablaLec) {
+		// TODO Auto-generated method stub
+		for (int i=0; i<tablaLec.length;i++)
+			System.out.println(tablaLec[i]);
 	}
 	//Leer numeros de ficheros
 	private static void leerFichero(File fichero, int[] tablaLec) {
