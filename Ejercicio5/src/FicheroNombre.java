@@ -118,7 +118,7 @@ public class FicheroNombre {
 				bwriter.write(linea[i]);
 				bwriter.newLine();
 			}
-			fwriter.close();
+			bwriter.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -134,10 +134,10 @@ public class FicheroNombre {
 				linea[i] = persona[i].nombre;
 			Arrays.sort(linea);
 			for(int i=0; i<persona.length; i++) {
-				bwriter.write(persona[i].nombre);
+				bwriter.write(linea[i]);
 				bwriter.newLine();
 			}
-			fwriter.close();
+			bwriter.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
