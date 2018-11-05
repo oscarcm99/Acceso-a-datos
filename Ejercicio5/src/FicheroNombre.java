@@ -115,7 +115,13 @@ public class FicheroNombre {
 				linea[i] = Integer.toString(persona[i].edad);
 			Arrays.sort(linea);
 			for(int i=0; i<persona.length; i++) {
+				bwriter.write(persona[i].nombre);
+				bwriter.newLine();
+				bwriter.write(persona[i].apellidos);
+				bwriter.newLine();
 				bwriter.write(linea[i]);
+				bwriter.newLine();
+				bwriter.write(persona[i].direccion);
 				bwriter.newLine();
 			}
 			bwriter.close();
@@ -127,14 +133,23 @@ public class FicheroNombre {
 	public void ordenarNombres(Persona[] persona) {
 		File fic = new File(fichero);
 		String[] linea = new String[persona.length];
+		String[] edad = new String[persona.length];
 		try {
 			FileWriter fwriter = new FileWriter(fic);
 			BufferedWriter  bwriter = new BufferedWriter(fwriter);
-			for(int i=0; i<persona.length; i++) 
+			for(int i=0; i<persona.length; i++) { 
 				linea[i] = persona[i].nombre;
+				edad[i] = Integer.toString(persona[i].edad);
+			}
 			Arrays.sort(linea);
 			for(int i=0; i<persona.length; i++) {
 				bwriter.write(linea[i]);
+				bwriter.newLine();
+				bwriter.write(persona[i].apellidos);
+				bwriter.newLine();
+				bwriter.write(edad[i]);
+				bwriter.newLine();
+				bwriter.write(persona[i].direccion);
 				bwriter.newLine();
 			}
 			bwriter.close();

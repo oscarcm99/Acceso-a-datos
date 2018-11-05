@@ -1,5 +1,20 @@
 Jorge
+Calderon
+19
+Escultura
 Juan
+Gonzalez
+12
+Gran via
 Luis
+Garcia
+34
+Arcones gil
 Oscar
+Sanchez
+22
+Montera
 Ramon
+Lopez
+11
+Mayor
