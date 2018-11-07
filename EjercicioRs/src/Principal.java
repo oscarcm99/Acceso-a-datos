@@ -56,26 +56,27 @@ public class Principal {
 								System.out.println(persona[i].getNombre()+" "+persona[i].getApellidos());
 						break;
 					case 6:
-						for(int i=0; i<edad.length; i++)
-							edad[i] = persona[i].edad;
-						Arrays.sort(edad);
-						for(int i=0; i<edad.length; i++)
-							persona[i].edad = edad[i];
-						fp.abrirFichero('E', "personas.txt");
-						for(int i=0; i<persona.length;i++)
-							fp.escribirFichero(persona[i]);						
-						fp.cerrarFichero();
+						for(int i=0; i<persona.length; i++) {
+							for(int j=0; j<persona.length-i-1; j++) {
+								if(persona[j].getEdad()>persona[j+1].getEdad()) {
+									Persona p = new Persona(persona[j].getNombre(),persona[j].getApellidos(),persona[j].getEdad(),persona[j].getDireccion());
+									persona[j] = persona[j+1];
+									persona[j+1] = p;
+								}
+							}
+						}
 						break;
 					case 7:
-						for(int i=0; i<nombre.length; i++)
-							nombre[i] = persona[i].nombre;
-						Arrays.sort(nombre);
-						for(int i=0;  i<nombre.length; i++)
-							persona[i].nombre = nombre[i];
-						fp.abrirFichero('E', "personas.txt");
-						for(int i=0; i<persona.length;i++)
-							fp.escribirFichero(persona[i]);
-						fp.cerrarFichero();
+						
+						for(int i=0; i<persona.length; i++) {
+							for(int j=0; j<persona.length-i-1; j++) {
+								if(persona[j].getNombre().compareTo(persona[j+1].getNombre()) > 0) {
+									Persona p = new Persona(persona[j].getNombre(),persona[j].getApellidos(),persona[j].getEdad(),persona[j].getDireccion());
+									persona[j] = persona[j+1];
+									persona[j+1] = p;
+								}
+							}
+						}
 						break;
 					case 8:
 						System.exit(0);
