@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -80,6 +81,17 @@ public class Principal {
 						break;
 					case 8:
 						System.exit(0);
+						break;
+					case 9:
+						ArrayList<Persona> tt = new ArrayList<Persona>();
+						Persona p;
+						fp.abrirFichero('L', "personas.txt");
+						do {
+							p = fp.leerFichero();
+							if(p.getNombre() != null)
+								tt.add(p);
+						}while(p.getNombre()!=null);
+						fp.cerrarFichero();
 						break;
 					default:
 						System.out.println("Nasti de plasti");

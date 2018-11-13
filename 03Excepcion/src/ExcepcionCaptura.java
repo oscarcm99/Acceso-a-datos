@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.IOException;
 public class ExcepcionCaptura {
-	static public int  leerNumero() throws IOException{
+	 public static int  leerNumero() throws IOException{
 		try {
 		Scanner teclado = new Scanner(System.in);
 		int opcion;
@@ -13,7 +13,7 @@ public class ExcepcionCaptura {
 			throw new IOException("ERROR AL LEER");
 		}
 	}
-	static public int leerNumero2() throws NumeroErroneo {
+	 public static int leerNumero2() throws NumeroErroneo {
 		int opcion = 0;
 
 		try {
